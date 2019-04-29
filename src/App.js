@@ -1,26 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
+import ClassWeatherApp from './ClassWeatherApp';
+import FunctionalWeatherApp from './FunctionalWeatherApp';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state={weather:"crappy"};
+  toggleWeather = () => {
+    this.setState(state => ({...state, weather: state.weather === 'crappy' ? 'nice' : 'crappy'}));
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <ClassWeatherApp name="Bubbb" weather="crappy"/>
+        <FunctionalWeatherApp name="Bubbb" weather="crappy" toggleWeather={this.toggleWeather}/>
+      </div>
+    );
+  }
 }
 
 export default App;
